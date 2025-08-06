@@ -7,9 +7,9 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <div className="flex min-h-screen bg-gradient-subtle">
+    <div className="min-h-screen bg-gradient-subtle">
       <Sidebar />
-      <main className="flex-1 ml-0 md:ml-64">
+      <main className="md:ml-64 min-h-screen">
         {children}
       </main>
     </div>
