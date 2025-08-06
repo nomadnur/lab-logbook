@@ -73,7 +73,7 @@ const Index = () => {
         icon={<FlaskConical className="h-5 w-5 text-primary-foreground" />}
       />
 
-      <div className="container mx-auto px-6 py-8">
+      <div className="container mx-auto px-6 pb-8">
         {filteredExperiments.length === 0 ? (
           <div className="text-center py-12">
             <FlaskConical className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
