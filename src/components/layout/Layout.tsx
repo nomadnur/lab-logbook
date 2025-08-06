@@ -7,13 +7,11 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen bg-gradient-subtle">
+    <div className="flex min-h-screen bg-gradient-subtle">
       <Sidebar />
-      <div className="md:ml-64">
-        <main className="min-h-screen">
-          {children}
-        </main>
-      </div>
+      <main className="flex-1">
+        {children}
+      </main>
     </div>
   );
 }

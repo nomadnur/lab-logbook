@@ -48,8 +48,8 @@ export function Sidebar() {
       {/* Sidebar */}
       <div
         className={cn(
-          "fixed left-0 top-0 z-40 h-full w-64 transform bg-gradient-card border-r border-border transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:z-0",
-          isOpen ? "translate-x-0" : "-translate-x-full"
+          "w-64 h-full bg-gradient-card border-r border-border transition-transform duration-300 ease-in-out md:translate-x-0 md:static md:z-0",
+          isOpen ? "fixed left-0 top-0 z-40 translate-x-0" : "fixed left-0 top-0 z-40 -translate-x-full md:relative"
         )}
       >
         <div className="flex h-full flex-col">
