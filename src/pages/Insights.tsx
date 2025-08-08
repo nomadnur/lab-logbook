@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Lightbulb } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/ui/page-header";
+import { EmptyState } from "@/components/ui/empty-state";
 
 const Insights = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -10,6 +11,29 @@ const Insights = () => {
     // TODO: Implement add insight functionality
     console.log("Add insight clicked");
   };
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+      
+      if (e.key === 'n' || e.key === 'N') {
+        e.preventDefault();
+        handleAddInsight();
+      }
+      
+      if (e.key === '/' && !e.metaKey && !e.ctrlKey) {
+        e.preventDefault();
+        const searchInput = document.querySelector('input[type="search"]') as HTMLInputElement;
+        searchInput?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <Layout>
@@ -23,17 +47,16 @@ const Insights = () => {
         icon={<Lightbulb className="h-5 w-5 text-primary-foreground" />}
       />
 
-      <div className="container mx-auto px-6 py-8">
-        <div className="text-center py-12">
-          <Lightbulb className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-foreground mb-2">Insights Section</h3>
-          <p className="text-muted-foreground mb-6">
-            This section will contain your research insights and conclusions.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Coming soon - full implementation with Supabase integration
-          </p>
-        </div>
+      <div className="container mx-auto px-6 pb-8">
+        <EmptyState
+          icon={<Lightbulb className="h-12 w-12" />}
+          title="Insights Section"
+          description="Transform facts into meaningful conclusions and patterns. Use 'N' to quickly add new insights when this feature is ready."
+          action={{
+            label: "Explore Insights",
+            onClick: handleAddInsight
+          }}
+        />
       </div>
     </Layout>
   );

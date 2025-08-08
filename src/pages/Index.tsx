@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FlaskConical } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { ExperimentCard } from "@/components/experiments/ExperimentCard";
 import { ExperimentDialog } from "@/components/experiments/ExperimentDialog";
+import { EmptyState } from "@/components/ui/empty-state";
 import { dataStore } from "@/stores/dataStore";
 import { Experiment } from "@/types";
 import { useToast } from "@/hooks/use-toast";
@@ -61,6 +62,29 @@ const Index = () => {
     }
   };
 
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+      
+      if (e.key === 'n' || e.key === 'N') {
+        e.preventDefault();
+        handleAddExperiment();
+      }
+      
+      if (e.key === '/' && !e.metaKey && !e.ctrlKey) {
+        e.preventDefault();
+        const searchInput = document.querySelector('input[type="search"]') as HTMLInputElement;
+        searchInput?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   return (
     <Layout>
       <PageHeader
@@ -75,28 +99,20 @@ const Index = () => {
 
       <div className="container mx-auto px-6 pb-8">
         {filteredExperiments.length === 0 ? (
-          <div className="text-center py-12">
-            <FlaskConical className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-foreground mb-2">
-              {searchValue ? "No experiments found" : "No experiments yet"}
-            </h3>
-            <p className="text-muted-foreground mb-6">
-              {searchValue 
-                ? "Try adjusting your search terms or filters"
-                : "Start building your research knowledge base by creating your first experiment"
-              }
-            </p>
-            {!searchValue && (
-              <button
-                onClick={handleAddExperiment}
-                className="text-primary hover:text-primary/80 font-medium"
-              >
-                Create your first experiment →
-              </button>
-            )}
-          </div>
+          <EmptyState
+            icon={<FlaskConical className="h-12 w-12" />}
+            title={searchValue ? "No experiments found" : "No experiments yet"}
+            description={searchValue 
+              ? "Try adjusting your search terms to find what you're looking for"
+              : "Start building your research knowledge base by creating your first experiment. Use 'N' to quickly add new experiments."
+            }
+            action={!searchValue ? {
+              label: "Create your first experiment",
+              onClick: handleAddExperiment
+            } : undefined}
+          />
         ) : (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {filteredExperiments.map((experiment) => (
               <ExperimentCard
                 key={experiment.id}

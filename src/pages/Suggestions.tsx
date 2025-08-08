@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ListChecks } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/ui/page-header";
+import { EmptyState } from "@/components/ui/empty-state";
 
 const Suggestions = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -10,6 +11,29 @@ const Suggestions = () => {
     // TODO: Implement add suggestion functionality
     console.log("Add suggestion clicked");
   };
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+      
+      if (e.key === 'n' || e.key === 'N') {
+        e.preventDefault();
+        handleAddSuggestion();
+      }
+      
+      if (e.key === '/' && !e.metaKey && !e.ctrlKey) {
+        e.preventDefault();
+        const searchInput = document.querySelector('input[type="search"]') as HTMLInputElement;
+        searchInput?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <Layout>
@@ -23,17 +47,16 @@ const Suggestions = () => {
         icon={<ListChecks className="h-5 w-5 text-primary-foreground" />}
       />
 
-      <div className="container mx-auto px-6 py-8">
-        <div className="text-center py-12">
-          <ListChecks className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-foreground mb-2">Suggestions Section</h3>
-          <p className="text-muted-foreground mb-6">
-            This section will contain your improvement suggestions and recommendations.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Coming soon - full implementation with Supabase integration
-          </p>
-        </div>
+      <div className="container mx-auto px-6 pb-8">
+        <EmptyState
+          icon={<ListChecks className="h-12 w-12" />}
+          title="Suggestions Section"
+          description="Track improvement recommendations and next steps. Use 'N' to quickly add new suggestions when this feature is ready."
+          action={{
+            label: "Start with Suggestions",
+            onClick: handleAddSuggestion
+          }}
+        />
       </div>
     </Layout>
   );
