@@ -3,13 +3,47 @@ import { FileText } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { EmptyState } from "@/components/ui/empty-state";
+import { FactCard } from "@/components/facts/FactCard";
+import { dataStore } from "@/stores/dataStore";
+import { Fact } from "@/types";
+import { useToast } from "@/hooks/use-toast";
 
 const Facts = () => {
+  const [facts, setFacts] = useState(dataStore.getFacts());
   const [searchValue, setSearchValue] = useState("");
+  const { toast } = useToast();
+
+  const filteredFacts = facts.filter(fact =>
+    fact.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+    fact.description.toLowerCase().includes(searchValue.toLowerCase()) ||
+    fact.category?.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
   const handleAddFact = () => {
     // TODO: Implement add fact functionality
-    console.log("Add fact clicked");
+    toast({
+      title: "Feature coming soon",
+      description: "Fact creation will be available once Supabase is connected.",
+    });
+  };
+
+  const handleEditFact = (fact: Fact) => {
+    // TODO: Implement edit fact functionality
+    toast({
+      title: "Feature coming soon",
+      description: "Fact editing will be available once Supabase is connected.",
+    });
+  };
+
+  const handleDeleteFact = (id: string) => {
+    if (dataStore.deleteFact(id)) {
+      setFacts(dataStore.getFacts());
+      toast({
+        title: "Fact deleted",
+        description: "The fact has been removed from your research hub.",
+        variant: "destructive",
+      });
+    }
   };
 
   // Keyboard shortcuts
@@ -48,15 +82,31 @@ const Facts = () => {
       />
 
       <div className="container mx-auto px-6 pb-8">
-        <EmptyState
-          icon={<FileText className="h-12 w-12" />}
-          title="Facts Section"
-          description="Collect and organize research findings and data points. Use 'N' to quickly add new facts when this feature is ready."
-          action={{
-            label: "Get Started with Facts",
-            onClick: handleAddFact
-          }}
-        />
+        {filteredFacts.length === 0 ? (
+          <EmptyState
+            icon={<FileText className="h-12 w-12" />}
+            title={searchValue ? "No facts found" : "Start collecting facts"}
+            description={searchValue 
+              ? "Try adjusting your search terms to find what you're looking for"
+              : "Collect and organize research findings and data points. Use 'N' to quickly add new facts."
+            }
+            action={!searchValue ? {
+              label: "Add your first fact",
+              onClick: handleAddFact
+            } : undefined}
+          />
+        ) : (
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {filteredFacts.map((fact) => (
+              <FactCard
+                key={fact.id}
+                fact={fact}
+                onEdit={handleEditFact}
+                onDelete={handleDeleteFact}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </Layout>
   );
