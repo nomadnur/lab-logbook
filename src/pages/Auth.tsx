@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
@@ -13,7 +14,7 @@ export default function Auth() {
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Dev mode credentials
+  // Dev mode credentials - using the confirmed account
   const DEV_EMAIL = 'developer@gmail.com';
   const DEV_PASSWORD = 'devtest123';
 
@@ -53,11 +54,8 @@ export default function Auth() {
     setEmail(DEV_EMAIL);
     setPassword(DEV_PASSWORD);
     
-    // Try to sign in first, if it fails, create the account
-    const { error } = await signIn(DEV_EMAIL, DEV_PASSWORD);
-    if (error) {
-      await signUp(DEV_EMAIL, DEV_PASSWORD);
-    }
+    // Just sign in with the confirmed dev account
+    await signIn(DEV_EMAIL, DEV_PASSWORD);
     setIsSubmitting(false);
   };
 
@@ -83,7 +81,7 @@ export default function Auth() {
               {isSubmitting ? 'Logging in...' : 'Quick Dev Login'}
             </Button>
             <div className="text-xs text-muted-foreground mt-1 text-center">
-              Auto-creates account if needed
+              Uses confirmed test account
             </div>
           </div>
 
