@@ -13,6 +13,10 @@ export default function Auth() {
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Dev mode credentials
+  const DEV_EMAIL = 'dev@test.com';
+  const DEV_PASSWORD = 'devtest123';
+
   // Redirect if already authenticated
   if (!loading && user) {
     return <Navigate to="/" replace />;
@@ -44,6 +48,19 @@ export default function Auth() {
     setIsSubmitting(false);
   };
 
+  const handleDevLogin = async () => {
+    setIsSubmitting(true);
+    setEmail(DEV_EMAIL);
+    setPassword(DEV_PASSWORD);
+    
+    // Try to sign in first, if it fails, create the account
+    const { error } = await signIn(DEV_EMAIL, DEV_PASSWORD);
+    if (error) {
+      await signUp(DEV_EMAIL, DEV_PASSWORD);
+    }
+    setIsSubmitting(false);
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-secondary/20 p-4">
       <Card className="w-full max-w-md">
@@ -54,6 +71,22 @@ export default function Auth() {
           </CardDescription>
         </CardHeader>
         <CardContent>
+          {/* Dev Mode Quick Login */}
+          <div className="mb-6 p-4 bg-secondary/20 rounded-lg border-2 border-dashed border-primary/20">
+            <div className="text-sm text-muted-foreground mb-2">🚀 Development Mode</div>
+            <Button 
+              onClick={handleDevLogin}
+              variant="outline"
+              className="w-full"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Logging in...' : 'Quick Dev Login'}
+            </Button>
+            <div className="text-xs text-muted-foreground mt-1 text-center">
+              Auto-creates account if needed
+            </div>
+          </div>
+
           <Tabs defaultValue="signin" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="signin">Sign In</TabsTrigger>
