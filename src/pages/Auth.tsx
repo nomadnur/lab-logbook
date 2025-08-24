@@ -14,7 +14,7 @@ export default function Auth() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Dev mode credentials
-  const DEV_EMAIL = 'dev@example.com';
+  const DEV_EMAIL = 'developer@gmail.com';
   const DEV_PASSWORD = 'devtest123';
 
   // Redirect if already authenticated
