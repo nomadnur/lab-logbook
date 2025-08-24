@@ -12,6 +12,8 @@ A modern web application for managing research projects, insights, facts, and ex
 - **Secure Authentication**: User management and secure access control
 - **Real-time Collaboration**: Share and collaborate on research with team members
 
+> 📖 **Learn More**: Visit our [Product Overview](/about) to understand the vision, target users, and key use cases that drive this platform.
+
 ## Technology Stack
 
 - **Frontend**: React 18, TypeScript, Tailwind CSS

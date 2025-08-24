@@ -7,16 +7,18 @@ import {
   ListChecks, 
   Menu, 
   X,
-  Search
+  Search,
+  Info
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navigation = [
-  { name: "Experiments", href: "/", icon: FlaskConical },
+  { name: "Projects", href: "/", icon: FlaskConical },
   { name: "Facts", href: "/facts", icon: FileText },
   { name: "Insights", href: "/insights", icon: Lightbulb },
   { name: "Suggestions", href: "/suggestions", icon: ListChecks },
+  { name: "About", href: "/about", icon: Info },
 ];
 
 export function Sidebar() {

@@ -7,6 +7,7 @@ import { AuthProvider } from "@/hooks/useAuth";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
+import About from "./pages/About";
 import ResearchProjects from "./pages/ResearchProjects";
 import ProjectDetail from "./pages/ProjectDetail";
 import Facts from "./pages/Facts";
@@ -25,6 +26,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/auth" element={<Auth />} />
+            <Route path="/about" element={<About />} />
             <Route path="/" element={
               <ProtectedRoute>
                 <ResearchProjects />
