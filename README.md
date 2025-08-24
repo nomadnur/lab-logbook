@@ -1,73 +1,125 @@
-# Welcome to your Lovable project
+# Research Intelligence Platform
 
-## Project info
+A modern web application for managing research projects, insights, facts, and experimental data. Built with React, TypeScript, and Supabase for seamless data management and real-time collaboration.
 
-**URL**: https://lovable.dev/projects/d78e9074-f788-4849-b01a-293bcf29d300
+## Features
 
-## How can I edit this code?
+- **Research Projects Management**: Create, organize, and track research projects
+- **Insights Discovery**: Capture and categorize key insights from your research
+- **Fact Database**: Maintain a structured collection of verified facts and data points
+- **Experimental Tracking**: Document and analyze experiments and their outcomes
+- **Smart Suggestions**: Get AI-powered recommendations based on your research data
+- **Secure Authentication**: User management and secure access control
+- **Real-time Collaboration**: Share and collaborate on research with team members
 
-There are several ways of editing your application.
+## Technology Stack
 
-**Use Lovable**
+- **Frontend**: React 18, TypeScript, Tailwind CSS
+- **UI Components**: shadcn/ui with Radix UI primitives
+- **Backend**: Supabase (PostgreSQL, Authentication, Real-time)
+- **State Management**: TanStack Query for server state
+- **Routing**: React Router v6
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS with custom design system
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d78e9074-f788-4849-b01a-293bcf29d300) and start prompting.
+## Quick Start
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- Node.js 18+ and npm (recommended: use [nvm](https://github.com/nvm-sh/nvm))
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+```bash
+# Clone the repository
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Environment Setup
 
-**Use GitHub Codespaces**
+The application uses Supabase for backend services. Environment variables are pre-configured for development.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── components/         # Reusable UI components
+│   ├── ui/            # Base UI components (shadcn/ui)
+│   ├── layout/        # Layout components (Sidebar, Header)
+│   ├── experiments/   # Experiment-related components
+│   ├── facts/         # Fact management components
+│   ├── insights/      # Insight components
+│   ├── research/      # Research project components
+│   └── suggestions/   # Suggestion components
+├── hooks/             # Custom React hooks
+├── pages/             # Page components
+├── stores/            # State management
+├── types/             # TypeScript type definitions
+├── lib/               # Utility functions
+└── integrations/      # External service integrations
+```
 
-This project is built with:
+## Key Pages
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Dashboard** (`/`): Overview of all research activities
+- **Research Projects** (`/projects`): Manage research projects
+- **Insights** (`/insights`): Browse and manage insights
+- **Facts** (`/facts`): Fact database and management
+- **Suggestions** (`/suggestions`): AI-powered recommendations
 
-## How can I deploy this project?
+## Development
 
-Simply open [Lovable](https://lovable.dev/projects/d78e9074-f788-4849-b01a-293bcf29d300) and click on Share -> Publish.
+### Available Scripts
 
-## Can I connect a custom domain to my Lovable project?
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-Yes, you can!
+### Code Style
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+This project uses:
+- ESLint for code linting
+- TypeScript for type safety
+- Tailwind CSS for styling with semantic design tokens
+- Component-based architecture for maintainability
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Deployment
+
+### Using Lovable
+
+1. Visit your [Lovable Project](https://lovable.dev/projects/d78e9074-f788-4849-b01a-293bcf29d300)
+2. Click "Share" → "Publish"
+
+### Manual Deployment
+
+Build the project and deploy the `dist` folder to your hosting provider:
+
+```bash
+npm run build
+```
+
+## Contributing
+
+1. Create a feature branch from `main`
+2. Make your changes following the existing code style
+3. Test thoroughly
+4. Submit a pull request
+
+## Support
+
+- [Lovable Documentation](https://docs.lovable.dev/)
+- [Project URL](https://lovable.dev/projects/d78e9074-f788-4849-b01a-293bcf29d300)
+
+## License
+
+This project is private and proprietary.
