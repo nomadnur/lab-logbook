@@ -5,7 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import ProtectedRoute from "@/components/ProtectedRoute";
-import Index from "./pages/Index";
+import Landing from "./pages/Landing";
+import Experiments from "./pages/Experiments";
 import Auth from "./pages/Auth";
 import About from "./pages/About";
 import ResearchProjects from "./pages/ResearchProjects";
@@ -25,9 +26,10 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
+            <Route path="/" element={<Landing />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/about" element={<About />} />
-            <Route path="/" element={
+            <Route path="/dashboard" element={
               <ProtectedRoute>
                 <ResearchProjects />
               </ProtectedRoute>
@@ -39,7 +41,7 @@ const App = () => (
             } />
             <Route path="/projects/:projectId/experiments" element={
               <ProtectedRoute>
-                <Index />
+                <Experiments />
               </ProtectedRoute>
             } />
             <Route path="/projects/:projectId/facts" element={

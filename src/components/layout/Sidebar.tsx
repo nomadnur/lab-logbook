@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navigation = [
-  { name: "Projects", href: "/", icon: FlaskConical },
+  { name: "Projects", href: "/dashboard", icon: FlaskConical },
   { name: "Facts", href: "/facts", icon: FileText },
   { name: "Insights", href: "/insights", icon: Lightbulb },
   { name: "Suggestions", href: "/suggestions", icon: ListChecks },
