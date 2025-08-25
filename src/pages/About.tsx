@@ -25,10 +25,10 @@ export default function About() {
             </div>
           </div>
           <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-4">
-            Research Intelligence Platform
+            Research Hub
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Transforming how researchers, academics, and organizations capture, connect, and discover insights from their knowledge work.
+            Turn scattered discovery into a continuous learning engine for startup and product teams. From fragmented notes to connected insights that power decisions.
           </p>
         </div>
 
@@ -42,25 +42,26 @@ export default function About() {
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-muted-foreground">
-              Research teams and knowledge workers struggle with scattered information, disconnected insights, 
-              and the inability to see patterns across their work. Traditional tools force researchers to:
+              In startup and product teams, important knowledge splinters across tools: customer interviews in Notion, 
+              experiments in spreadsheets, insights in slide decks, and "next steps" buried in chats. This fragmentation 
+              slows validation, repeats work, and hides patterns that should inform the roadmap.
             </p>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <li className="flex items-start gap-2">
                 <span className="text-destructive mt-1">•</span>
-                <span className="text-sm">Jump between multiple disconnected tools</span>
+                <span className="text-sm">Discovery findings don't reach delivery teams</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-destructive mt-1">•</span>
-                <span className="text-sm">Lose valuable insights in silos</span>
+                <span className="text-sm">Experiments aren't linked to justifying facts</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-destructive mt-1">•</span>
-                <span className="text-sm">Struggle to connect related findings</span>
+                <span className="text-sm">Insights aren't reused; roadmaps drift from evidence</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-destructive mt-1">•</span>
-                <span className="text-sm">Miss opportunities for breakthrough discoveries</span>
+                <span className="text-sm">Backlog items lack traceability to real signals</span>
               </li>
             </ul>
           </CardContent>
@@ -74,7 +75,7 @@ export default function About() {
               <CardTitle>Our Vision</CardTitle>
             </div>
             <CardDescription>
-              A world where every insight is connected, every pattern is discoverable, and breakthrough discoveries emerge from intelligent knowledge synthesis.
+              From scattered notes to a learning engine. Connect experiments, facts, insights, and suggestions into a traceable chain that powers startup validation and product decisions.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -123,21 +124,21 @@ export default function About() {
               <div className="space-y-4">
                 <div className="border rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <Badge variant="secondary">Academic Researchers</Badge>
+                    <Badge variant="secondary">Founders & Early Teams</Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    PhD students, professors, and research teams managing literature reviews, 
-                    experimental data, and collaborative research projects.
+                    Startup founders validating problem/solution fit, turning customer conversations 
+                    into actionable insights that guide product decisions.
                   </p>
                 </div>
                 
                 <div className="border rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <Badge variant="secondary">R&D Teams</Badge>
+                    <Badge variant="secondary">Product Managers</Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Corporate research teams, innovation labs, and product development 
-                    groups tracking experiments and market insights.
+                    PMs aligning roadmaps with evidence, connecting user feedback to features, 
+                    and building traceable decision chains from insight to implementation.
                   </p>
                 </div>
               </div>
@@ -145,21 +146,21 @@ export default function About() {
               <div className="space-y-4">
                 <div className="border rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <Badge variant="secondary">Knowledge Workers</Badge>
+                    <Badge variant="secondary">UX Researchers & Designers</Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Consultants, analysts, and strategic planners who need to synthesize 
-                    information from multiple sources into actionable insights.
+                    Researchers turning interviews and usability tests into reusable insights, 
+                    and designers who need the "why" behind their tasks.
                   </p>
                 </div>
                 
                 <div className="border rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <Badge variant="secondary">Think Tanks & NGOs</Badge>
+                    <Badge variant="secondary">Growth & Marketing Teams</Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Policy researchers, social scientists, and advocacy organizations 
-                    building evidence-based arguments and reports.
+                    Teams running rapid experiments, tracking conversion signals, and building 
+                    evidence-based growth strategies from validated learnings.
                   </p>
                 </div>
               </div>
@@ -178,60 +179,60 @@ export default function About() {
           <CardContent>
             <div className="space-y-6">
               <div className="border-l-4 border-primary pl-4">
-                <h3 className="font-semibold text-lg mb-2">Literature Review & Meta-Analysis</h3>
+                <h3 className="font-semibold text-lg mb-2">🧪 Experiment Tracking</h3>
                 <p className="text-muted-foreground mb-3">
-                  Systematically capture findings from hundreds of papers, identify patterns, 
-                  and discover research gaps that lead to novel hypotheses.
+                  Define hypotheses, log variants, record outcomes, and keep a history of what was tried 
+                  and why. Link experiments to the facts that justify them.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">Academic Research</Badge>
-                  <Badge variant="outline">Systematic Reviews</Badge>
-                  <Badge variant="outline">Evidence Synthesis</Badge>
+                  <Badge variant="outline">A/B Testing</Badge>
+                  <Badge variant="outline">Feature Validation</Badge>
+                  <Badge variant="outline">Hypothesis Testing</Badge>
                 </div>
               </div>
 
               <Separator />
 
               <div className="border-l-4 border-secondary pl-4">
-                <h3 className="font-semibold text-lg mb-2">Product Development Intelligence</h3>
+                <h3 className="font-semibold text-lg mb-2">📊 Fact Collection</h3>
                 <p className="text-muted-foreground mb-3">
-                  Track user feedback, competitive analysis, and experimental results to 
-                  inform product roadmaps and strategic decisions.
+                  Capture atomic observations from interviews, analytics, support tickets, and usability tests. 
+                  Tag by topic, persona, and journey stage.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">Product Management</Badge>
-                  <Badge variant="outline">User Research</Badge>
-                  <Badge variant="outline">Competitive Intelligence</Badge>
+                  <Badge variant="outline">User Interviews</Badge>
+                  <Badge variant="outline">Analytics Data</Badge>
+                  <Badge variant="outline">Customer Feedback</Badge>
                 </div>
               </div>
 
               <Separator />
 
               <div className="border-l-4 border-accent pl-4">
-                <h3 className="font-semibold text-lg mb-2">Policy Research & Analysis</h3>
+                <h3 className="font-semibold text-lg mb-2">💡 Insight Generation</h3>
                 <p className="text-muted-foreground mb-3">
-                  Aggregate evidence from multiple domains to support policy recommendations 
-                  and build comprehensive briefing documents.
+                  Connect facts across sources to form clear statements that guide decisions. 
+                  Turn patterns into actionable insights with evidence trails.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">Policy Analysis</Badge>
-                  <Badge variant="outline">Government Research</Badge>
-                  <Badge variant="outline">Evidence-Based Policy</Badge>
+                  <Badge variant="outline">Pattern Recognition</Badge>
+                  <Badge variant="outline">Evidence Synthesis</Badge>
+                  <Badge variant="outline">Decision Support</Badge>
                 </div>
               </div>
 
               <Separator />
 
               <div className="border-l-4 border-muted pl-4">
-                <h3 className="font-semibold text-lg mb-2">Innovation Scouting</h3>
+                <h3 className="font-semibold text-lg mb-2">✨ Suggestion Management</h3>
                 <p className="text-muted-foreground mb-3">
-                  Monitor emerging technologies, track patent landscapes, and identify 
-                  partnership opportunities across industries.
+                  Turn insights into prioritized actions; track status and keep a link back to the evidence. 
+                  Build a backlog anchored in validated learning.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">Technology Scouting</Badge>
-                  <Badge variant="outline">Patent Analysis</Badge>
-                  <Badge variant="outline">Innovation Management</Badge>
+                  <Badge variant="outline">Feature Backlog</Badge>
+                  <Badge variant="outline">Roadmap Planning</Badge>
+                  <Badge variant="outline">Evidence-Based Decisions</Badge>
                 </div>
               </div>
             </div>
@@ -243,7 +244,7 @@ export default function About() {
           <CardHeader>
             <div className="flex items-center gap-2">
               <Shield className="h-5 w-5 text-success" />
-              <CardTitle>Why Choose Our Platform</CardTitle>
+              <CardTitle>What Changes With Research Hub</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
@@ -254,9 +255,9 @@ export default function About() {
                     <div className="h-2 w-2 bg-success rounded-full"></div>
                   </div>
                   <div>
-                    <h4 className="font-medium">Unified Knowledge Hub</h4>
+                    <h4 className="font-medium">Faster Validation</h4>
                     <p className="text-sm text-muted-foreground">
-                      One platform for all your research artifacts - no more tool switching
+                      Shorten cycles from idea → insight → iteration with connected learning
                     </p>
                   </div>
                 </div>
@@ -266,9 +267,9 @@ export default function About() {
                     <div className="h-2 w-2 bg-success rounded-full"></div>
                   </div>
                   <div>
-                    <h4 className="font-medium">Intelligent Connections</h4>
+                    <h4 className="font-medium">Less Waste</h4>
                     <p className="text-sm text-muted-foreground">
-                      AI-powered linking reveals hidden patterns in your knowledge
+                      Stop repeating interviews and tests; reuse evidence across projects
                     </p>
                   </div>
                 </div>
@@ -278,9 +279,9 @@ export default function About() {
                     <div className="h-2 w-2 bg-success rounded-full"></div>
                   </div>
                   <div>
-                    <h4 className="font-medium">Collaborative Research</h4>
+                    <h4 className="font-medium">Clear Prioritization</h4>
                     <p className="text-sm text-muted-foreground">
-                      Real-time collaboration with secure access controls
+                      Focus on actions tied to strong signals, not vibes or assumptions
                     </p>
                   </div>
                 </div>
@@ -292,9 +293,9 @@ export default function About() {
                     <div className="h-2 w-2 bg-success rounded-full"></div>
                   </div>
                   <div>
-                    <h4 className="font-medium">Scalable Architecture</h4>
+                    <h4 className="font-medium">Credible Narratives</h4>
                     <p className="text-sm text-muted-foreground">
-                      From individual researchers to enterprise teams
+                      Tell the story from user proof to product change with evidence trails
                     </p>
                   </div>
                 </div>
@@ -304,9 +305,9 @@ export default function About() {
                     <div className="h-2 w-2 bg-success rounded-full"></div>
                   </div>
                   <div>
-                    <h4 className="font-medium">Export & Integration</h4>
+                    <h4 className="font-medium">Team Alignment</h4>
                     <p className="text-sm text-muted-foreground">
-                      Seamless integration with existing research workflows
+                      A single source of truth for "what we know" across the entire team
                     </p>
                   </div>
                 </div>
@@ -316,9 +317,9 @@ export default function About() {
                     <div className="h-2 w-2 bg-success rounded-full"></div>
                   </div>
                   <div>
-                    <h4 className="font-medium">Privacy & Security</h4>
+                    <h4 className="font-medium">Compounding Learning</h4>
                     <p className="text-sm text-muted-foreground">
-                      Enterprise-grade security for sensitive research data
+                      Build a repeatable learning engine that gets smarter with every insight
                     </p>
                   </div>
                 </div>
