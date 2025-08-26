@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, BookOpen, FlaskConical, Lightbulb, TrendingUp, Zap, CheckCircle } from "lucide-react";
+import { ArrowRight, BookOpen, FlaskConical, Lightbulb, TrendingUp, Zap, CheckCircle, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import dashboardScreenshot from "@/assets/dashboard-screenshot.jpg";
+import beforeAfterComparison from "@/assets/before-after-comparison.jpg";
+import workflowDiagram from "@/assets/workflow-diagram.jpg";
 
 export default function Landing() {
   return (
@@ -80,60 +83,90 @@ export default function Landing() {
       {/* Problem Section */}
       <section className="bg-muted/30 py-16">
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center mb-12">
+          <div className="max-w-6xl mx-auto text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">The Fragmentation Problem</h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-muted-foreground mb-8">
               Startup teams lose critical insights across disconnected tools
             </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="border-destructive/20">
-              <CardHeader>
-                <CardTitle className="text-destructive">Before Research Hub</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex items-center gap-2 text-sm">
-                  <span className="w-2 h-2 bg-destructive rounded-full"></span>
-                  Discovery findings don't reach delivery teams
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <span className="w-2 h-2 bg-destructive rounded-full"></span>
-                  Experiments aren't linked to justifying facts
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <span className="w-2 h-2 bg-destructive rounded-full"></span>
-                  Insights get lost; roadmaps drift from evidence
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <span className="w-2 h-2 bg-destructive rounded-full"></span>
-                  Decisions justified by memory and slides
-                </div>
-              </CardContent>
-            </Card>
             
-            <Card className="border-success/20">
-              <CardHeader>
-                <CardTitle className="text-success">After Research Hub</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-success" />
-                  Decisions anchored to traceable facts
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-success" />
-                  Compounding knowledge across projects
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-success" />
-                  Backlog prioritized by validated insights
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-success" />
-                  Evidence trails from user proof to product change
-                </div>
-              </CardContent>
-            </Card>
+            {/* Visual comparison image */}
+            <div className="mb-12">
+              <img 
+                src={beforeAfterComparison} 
+                alt="Before and after comparison showing fragmented vs organized research"
+                className="rounded-lg shadow-elegant mx-auto max-w-full h-auto"
+              />
+            </div>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {/* Before - Enhanced visual design */}
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-destructive/20 to-destructive/10 rounded-lg blur"></div>
+              <Card className="relative border-destructive/30 bg-background/50 backdrop-blur-sm">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="p-2 bg-destructive/10 rounded-lg">
+                      <X className="h-5 w-5 text-destructive" />
+                    </div>
+                    <CardTitle className="text-destructive text-xl">Before Research Hub</CardTitle>
+                  </div>
+                  <CardDescription className="text-base">Fragmented knowledge, lost insights</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-start gap-3 p-3 bg-destructive/5 rounded-lg">
+                    <span className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">Discovery findings don't reach delivery teams</span>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 bg-destructive/5 rounded-lg">
+                    <span className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">Experiments aren't linked to justifying facts</span>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 bg-destructive/5 rounded-lg">
+                    <span className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">Insights get lost; roadmaps drift from evidence</span>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 bg-destructive/5 rounded-lg">
+                    <span className="w-2 h-2 bg-destructive rounded-full mt-2 flex-shrink-0"></span>
+                    <span className="text-sm">Decisions justified by memory and slides</span>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+            
+            {/* After - Enhanced visual design */}
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-primary rounded-lg blur opacity-30"></div>
+              <Card className="relative border-primary/30 bg-background/50 backdrop-blur-sm">
+                <CardHeader className="pb-4">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <CheckCircle className="h-5 w-5 text-primary" />
+                    </div>
+                    <CardTitle className="text-primary text-xl">After Research Hub</CardTitle>
+                  </div>
+                  <CardDescription className="text-base">Connected learning, compounding insights</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg">
+                    <CheckCircle className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                    <span className="text-sm">Decisions anchored to traceable facts</span>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg">
+                    <CheckCircle className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                    <span className="text-sm">Compounding knowledge across projects</span>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg">
+                    <CheckCircle className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                    <span className="text-sm">Backlog prioritized by validated insights</span>
+                  </div>
+                  <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg">
+                    <CheckCircle className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                    <span className="text-sm">Evidence trails from user proof to product change</span>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -143,9 +176,18 @@ export default function Landing() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Four Connected Components</h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-muted-foreground mb-8">
               A simple model that connects everything you learn
             </p>
+            
+            {/* Dashboard screenshot */}
+            <div className="mb-12">
+              <img 
+                src={dashboardScreenshot} 
+                alt="Research Hub dashboard showing connected experiments, facts, insights, and suggestions"
+                className="rounded-lg shadow-elegant mx-auto max-w-full h-auto border border-border/50"
+              />
+            </div>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="border-primary/20 hover:border-primary/40 transition-colors">
@@ -217,9 +259,18 @@ export default function Landing() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">See It In Action</h2>
-              <p className="text-xl text-muted-foreground">
+              <p className="text-xl text-muted-foreground mb-8">
                 How a product manager uses Research Hub to validate a feature
               </p>
+              
+              {/* Workflow diagram */}
+              <div className="mb-8">
+                <img 
+                  src={workflowDiagram} 
+                  alt="Workflow diagram showing the 4-step research process"
+                  className="rounded-lg mx-auto max-w-full h-auto"
+                />
+              </div>
             </div>
             
             <div className="space-y-6">
