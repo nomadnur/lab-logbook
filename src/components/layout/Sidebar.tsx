@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import { 
   FlaskConical, 
   FileText, 
@@ -8,24 +8,31 @@ import {
   Menu, 
   X,
   Search,
-  Info
+  Info,
+  FolderOpen
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-const navigation = [
-  { name: "Projects", href: "/dashboard", icon: FlaskConical },
-  { name: "Facts", href: "/facts", icon: FileText },
-  { name: "Insights", href: "/insights", icon: Lightbulb },
-  { name: "Suggestions", href: "/suggestions", icon: ListChecks },
-  { name: "About", href: "/about", icon: Info },
-];
-
 export function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { projectId } = useParams();
 
   const toggleSidebar = () => setIsOpen(!isOpen);
+
+  // Navigation items based on whether we're in a project context
+  const navigation = projectId ? [
+    { name: "Projects", href: "/dashboard", icon: FolderOpen },
+    { name: "Experiments", href: `/projects/${projectId}/experiments`, icon: FlaskConical },
+    { name: "Facts", href: `/projects/${projectId}/facts`, icon: FileText },
+    { name: "Insights", href: `/projects/${projectId}/insights`, icon: Lightbulb },
+    { name: "Suggestions", href: `/projects/${projectId}/suggestions`, icon: ListChecks },
+    { name: "About", href: "/about", icon: Info },
+  ] : [
+    { name: "Projects", href: "/dashboard", icon: FolderOpen },
+    { name: "About", href: "/about", icon: Info },
+  ];
 
   return (
     <>

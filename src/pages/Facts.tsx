@@ -1,17 +1,60 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { FileText } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { EmptyState } from "@/components/ui/empty-state";
 import { FactCard } from "@/components/facts/FactCard";
-import { dataStore } from "@/stores/dataStore";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 import { Fact } from "@/types";
 import { useToast } from "@/hooks/use-toast";
 
 const Facts = () => {
-  const [facts, setFacts] = useState(dataStore.getFacts());
+  const { projectId } = useParams<{ projectId: string }>();
+  const { user } = useAuth();
+  const [facts, setFacts] = useState<Fact[]>([]);
+  const [loading, setLoading] = useState(true);
   const [searchValue, setSearchValue] = useState("");
   const { toast } = useToast();
+
+  useEffect(() => {
+    const fetchFacts = async () => {
+      if (!user || !projectId) return;
+
+      try {
+        const { data, error } = await supabase
+          .from('facts')
+          .select('*')
+          .eq('research_project_id', projectId)
+          .order('created_at', { ascending: false });
+
+        if (error) throw error;
+        
+        // Transform the data to match our Fact type
+        const transformedFacts: Fact[] = (data || []).map(item => ({
+          id: item.id,
+          title: item.title,
+          description: item.description,
+          category: item.category,
+          createdAt: item.created_at,
+          updatedAt: item.updated_at,
+        }));
+        
+        setFacts(transformedFacts);
+      } catch (error: any) {
+        toast({
+          title: "Error loading facts",
+          description: error.message,
+          variant: "destructive",
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFacts();
+  }, [user, projectId, toast]);
 
   const filteredFacts = facts.filter(fact =>
     fact.title.toLowerCase().includes(searchValue.toLowerCase()) ||
@@ -35,12 +78,25 @@ const Facts = () => {
     });
   };
 
-  const handleDeleteFact = (id: string) => {
-    if (dataStore.deleteFact(id)) {
-      setFacts(dataStore.getFacts());
+  const handleDeleteFact = async (id: string) => {
+    try {
+      const { error } = await supabase
+        .from('facts')
+        .delete()
+        .eq('id', id);
+
+      if (error) throw error;
+
+      setFacts(facts.filter(fact => fact.id !== id));
       toast({
         title: "Fact deleted",
-        description: "The fact has been removed from your research hub.",
+        description: "The fact has been removed from your knowledge base.",
+        variant: "destructive",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: "Failed to delete the fact.",
         variant: "destructive",
       });
     }
@@ -69,11 +125,21 @@ const Facts = () => {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  if (loading) {
+    return (
+      <Layout>
+        <div className="flex items-center justify-center h-96">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+        </div>
+      </Layout>
+    );
+  }
+
   return (
     <Layout>
       <PageHeader
         title="Facts"
-        description="Collect and organize research findings and data points"
+        description="Organize and manage your research facts"
         searchValue={searchValue}
         onSearchChange={setSearchValue}
         onAddClick={handleAddFact}
@@ -85,10 +151,10 @@ const Facts = () => {
         {filteredFacts.length === 0 ? (
           <EmptyState
             icon={<FileText className="h-12 w-12" />}
-            title={searchValue ? "No facts found" : "Start collecting facts"}
+            title={searchValue ? "No facts found" : "No facts yet"}
             description={searchValue 
               ? "Try adjusting your search terms to find what you're looking for"
-              : "Collect and organize research findings and data points. Use 'N' to quickly add new facts."
+              : "Start building your research knowledge base by collecting facts. Use 'N' to quickly add new facts."
             }
             action={!searchValue ? {
               label: "Add your first fact",
