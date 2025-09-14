@@ -11,6 +11,10 @@ export interface ResearchProject {
   status: string;
   created_at: string;
   updated_at: string;
+  problem_statement?: string;
+  target_audience?: string;
+  objectives?: string;
+  background?: string;
 }
 
 interface ResearchProjectCardProps {

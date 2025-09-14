@@ -226,28 +226,40 @@ export type Database = {
       }
       research_projects: {
         Row: {
+          background: string | null
           created_at: string
           description: string | null
           id: string
+          objectives: string | null
+          problem_statement: string | null
           status: string | null
+          target_audience: string | null
           title: string
           updated_at: string
           user_id: string
         }
         Insert: {
+          background?: string | null
           created_at?: string
           description?: string | null
           id?: string
+          objectives?: string | null
+          problem_statement?: string | null
           status?: string | null
+          target_audience?: string | null
           title: string
           updated_at?: string
           user_id: string
         }
         Update: {
+          background?: string | null
           created_at?: string
           description?: string | null
           id?: string
+          objectives?: string | null
+          problem_statement?: string | null
           status?: string | null
+          target_audience?: string | null
           title?: string
           updated_at?: string
           user_id?: string

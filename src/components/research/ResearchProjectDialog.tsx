@@ -18,16 +18,28 @@ export function ResearchProjectDialog({ open, onOpenChange, project, onSave }: R
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [status, setStatus] = useState<string>('active');
+  const [problemStatement, setProblemStatement] = useState('');
+  const [targetAudience, setTargetAudience] = useState('');
+  const [objectives, setObjectives] = useState('');
+  const [background, setBackground] = useState('');
 
   useEffect(() => {
     if (project) {
       setTitle(project.title);
       setDescription(project.description || '');
       setStatus(project.status);
+      setProblemStatement(project.problem_statement || '');
+      setTargetAudience(project.target_audience || '');
+      setObjectives(project.objectives || '');
+      setBackground(project.background || '');
     } else {
       setTitle('');
       setDescription('');
       setStatus('active');
+      setProblemStatement('');
+      setTargetAudience('');
+      setObjectives('');
+      setBackground('');
     }
   }, [project, open]);
 
@@ -38,6 +50,10 @@ export function ResearchProjectDialog({ open, onOpenChange, project, onSave }: R
       title: title.trim(),
       description: description.trim() || undefined,
       status,
+      problem_statement: problemStatement.trim() || undefined,
+      target_audience: targetAudience.trim() || undefined,
+      objectives: objectives.trim() || undefined,
+      background: background.trim() || undefined,
     });
 
     onOpenChange(false);
@@ -45,7 +61,7 @@ export function ResearchProjectDialog({ open, onOpenChange, project, onSave }: R
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>
             {project ? 'Edit Research Project' : 'Create New Research Project'}
@@ -75,6 +91,45 @@ export function ResearchProjectDialog({ open, onOpenChange, project, onSave }: R
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Enter project description (optional)"
               rows={3}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="problemStatement">Problem Statement</Label>
+            <Textarea
+              id="problemStatement"
+              value={problemStatement}
+              onChange={(e) => setProblemStatement(e.target.value)}
+              placeholder="What problem does this research solve?"
+              rows={2}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="targetAudience">Target Audience</Label>
+            <Input
+              id="targetAudience"
+              value={targetAudience}
+              onChange={(e) => setTargetAudience(e.target.value)}
+              placeholder="Who will benefit from this research?"
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="objectives">Objectives</Label>
+            <Textarea
+              id="objectives"
+              value={objectives}
+              onChange={(e) => setObjectives(e.target.value)}
+              placeholder="What are the main goals of this research?"
+              rows={2}
+            />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="background">Background</Label>
+            <Textarea
+              id="background"
+              value={background}
+              onChange={(e) => setBackground(e.target.value)}
+              placeholder="Additional context or background information..."
+              rows={2}
             />
           </div>
           <div className="grid gap-2">
