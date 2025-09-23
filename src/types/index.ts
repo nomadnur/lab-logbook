@@ -5,6 +5,7 @@ export interface Experiment {
   methodology?: string;
   results?: string;
   status?: 'planning' | 'in-progress' | 'completed' | 'paused';
+  tags?: string[];
   createdAt: string;
   updatedAt: string;
 }
@@ -14,6 +15,7 @@ export interface Fact {
   title: string;
   description: string;
   category?: string;
+  tags?: string[];
   relatedExperiments?: string[];
   createdAt: string;
   updatedAt: string;
@@ -23,6 +25,7 @@ export interface Insight {
   id: string;
   title: string;
   description: string;
+  tags?: string[];
   relatedFacts?: string[];
   createdAt: string;
   updatedAt: string;
@@ -34,6 +37,7 @@ export interface Suggestion {
   description: string;
   priority: 'low' | 'medium' | 'high';
   status: 'open' | 'in-progress' | 'implemented';
+  tags?: string[];
   createdAt: string;
   updatedAt: string;
 }

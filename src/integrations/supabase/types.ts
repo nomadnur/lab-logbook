@@ -14,6 +14,38 @@ export type Database = {
   }
   public: {
     Tables: {
+      entity_projects: {
+        Row: {
+          created_at: string
+          entity_id: string
+          entity_type: string
+          id: string
+          research_project_id: string
+        }
+        Insert: {
+          created_at?: string
+          entity_id: string
+          entity_type: string
+          id?: string
+          research_project_id: string
+        }
+        Update: {
+          created_at?: string
+          entity_id?: string
+          entity_type?: string
+          id?: string
+          research_project_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "entity_projects_research_project_id_fkey"
+            columns: ["research_project_id"]
+            isOneToOne: false
+            referencedRelation: "research_projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       experiments: {
         Row: {
           created_at: string
@@ -23,6 +55,7 @@ export type Database = {
           research_project_id: string
           results: string | null
           status: string | null
+          tags: string[] | null
           title: string
           updated_at: string
           user_id: string
@@ -35,6 +68,7 @@ export type Database = {
           research_project_id: string
           results?: string | null
           status?: string | null
+          tags?: string[] | null
           title: string
           updated_at?: string
           user_id: string
@@ -47,6 +81,7 @@ export type Database = {
           research_project_id?: string
           results?: string | null
           status?: string | null
+          tags?: string[] | null
           title?: string
           updated_at?: string
           user_id?: string
@@ -98,6 +133,7 @@ export type Database = {
           description: string | null
           id: string
           research_project_id: string
+          tags: string[] | null
           title: string
           updated_at: string
           user_id: string
@@ -108,6 +144,7 @@ export type Database = {
           description?: string | null
           id?: string
           research_project_id: string
+          tags?: string[] | null
           title: string
           updated_at?: string
           user_id: string
@@ -118,6 +155,7 @@ export type Database = {
           description?: string | null
           id?: string
           research_project_id?: string
+          tags?: string[] | null
           title?: string
           updated_at?: string
           user_id?: string
@@ -168,6 +206,7 @@ export type Database = {
           description: string | null
           id: string
           research_project_id: string
+          tags: string[] | null
           title: string
           updated_at: string
           user_id: string
@@ -177,6 +216,7 @@ export type Database = {
           description?: string | null
           id?: string
           research_project_id: string
+          tags?: string[] | null
           title: string
           updated_at?: string
           user_id: string
@@ -186,6 +226,7 @@ export type Database = {
           description?: string | null
           id?: string
           research_project_id?: string
+          tags?: string[] | null
           title?: string
           updated_at?: string
           user_id?: string
@@ -274,6 +315,7 @@ export type Database = {
           priority: string | null
           research_project_id: string
           status: string | null
+          tags: string[] | null
           title: string
           updated_at: string
           user_id: string
@@ -285,6 +327,7 @@ export type Database = {
           priority?: string | null
           research_project_id: string
           status?: string | null
+          tags?: string[] | null
           title: string
           updated_at?: string
           user_id: string
@@ -296,6 +339,7 @@ export type Database = {
           priority?: string | null
           research_project_id?: string
           status?: string | null
+          tags?: string[] | null
           title?: string
           updated_at?: string
           user_id?: string
